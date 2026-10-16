@@ -32,9 +32,17 @@ ASSETS_PER_PIPELINE = 10
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
+pip install -r requirements.txt dagster-webserver
 dagster dev -m automation_load_test.definitions
 ```
+
+There's no `pyproject.toml`/`setup.py` here on purpose: Dagster+ Serverless's
+Docker build installs dependencies from the manifest *before* your source is
+copied into the image, so a manifest that tries to package this project's
+own code (rather than just declare its third-party dependencies) fails --
+setuptools needs that code to already exist on disk. `requirements.txt`
+avoids this entirely; the code location just runs out of the working
+directory once it's copied in.
 
 Building all 30,000 `AssetsDefinition` objects takes a few seconds on
 import; the webserver and daemon load the full catalog on startup.
