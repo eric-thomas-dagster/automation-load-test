@@ -1,0 +1,6 @@
+locations:
+  - location_name: automation_load_test
+    code_source:
+      package_name: automation_load_test.definitions
+    build:
+      directory: .
