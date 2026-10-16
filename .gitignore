@@ -4,3 +4,4 @@ __pycache__/
 *.egg-info/
 .tmp_dagster_home*/
 .DS_Store
+build/

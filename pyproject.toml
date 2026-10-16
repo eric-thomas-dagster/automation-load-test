@@ -5,6 +5,7 @@ description = "Synthetic Dagster project for load-testing the Automations tab at
 requires-python = ">=3.9"
 dependencies = [
     "dagster",
+    "dagster-cloud",
 ]
 
 [project.optional-dependencies]
@@ -19,5 +20,5 @@ module_name = "automation_load_test.definitions"
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[tool.setuptools]
+packages = ["automation_load_test"]
